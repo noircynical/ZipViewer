@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.example.cremazipview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ViewAnimator
+        android:id="@+id/TopBarSwitcher"
+        android:layout_width="match_parent"
+        android:layout_height="72px"
+        android:layout_alignParentTop="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bar_body_pattern"
+            android:onClick="onNothing" >
+
+            <ImageView
+                android:id="@+id/IconZip"
+                android:layout_width="37px"
+                android:layout_height="47px"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="11px"
+                android:layout_marginLeft="17px"
+                android:src="@drawable/icon_zip" />
+
+            <com.shou.ui.CTextView
+                android:id="@+id/FileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="19px"
+                android:textColor="#ffffff"
+                android:textSize="27px"
+                custom:typeface="YDYGO33" />
+
+            <ImageView
+                android:id="@+id/SettingButton"
+                android:layout_width="38px"
+                android:layout_height="38px"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="17px"
+                android:layout_marginRight="20px"
+                android:onClick="OnSettingClicked"
+                android:src="@drawable/icon_settings_n" />
+
+            <ImageView
+                android:id="@+id/ZoomOut"
+                android:layout_width="38px"
+                android:layout_height="38px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="17px"
+                android:layout_marginRight="17px"
+                android:layout_toLeftOf="@+id/SettingButton"
+                android:onClick="OnZoomClicked"
+                android:src="@drawable/zoom_out_button" />
+
+            <ImageView
+                android:id="@+id/ZoomIn"
+                android:layout_width="38px"
+                android:layout_height="38px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="17px"
+                android:layout_marginRight="17px"
+                android:layout_toLeftOf="@+id/ZoomOut"
+                android:onClick="OnZoomClicked"
+                android:src="@drawable/zoom_in_button" />
+        </RelativeLayout>
+    </ViewAnimator>
+
+    <ImageView
+        android:id="@+id/ImageViewFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ViewAnimator
+        android:id="@+id/SettingSwitcher"
+        android:layout_width="468px"
+        android:layout_height="350px"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/TopBarSwitcher" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/option_body"
+            android:onClick="onNothing" >
+
+            <com.shou.ui.CTextView
+                android:id="@+id/autorotateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="30px"
+                android:text="자동회전"
+                android:textColor="#4C3317"
+                android:textSize="18px"
+                custom:typeface="YDYGO33" />
+
+            <LinearLayout
+                android:id="@+id/AutoRotateView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="55px"
+                android:layout_marginTop="19px"
+                android:layout_toRightOf="@+id/autorotateText"
+                android:background="@drawable/switch_off"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/AutoRotateOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnAutoRotateClicked" >
+
+                    <ImageView
+                        android:id="@+id/AutoRotateOffButton"
+                        android:layout_width="76px"
+                        android:layout_height="44px"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/AutoRotateOffText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="off"
+                        android:textColor="#4C3317"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/AutoRotateOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnAutoRotateClicked" >
+
+                    <ImageView
+                        android:id="@+id/AutoRotateOnButton"
+                        android:layout_width="76px"
+                        android:layout_height="44px"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/AutoRotateOnText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="on"
+                        android:textColor="#4C3317"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--
+                 <Switch
+                android:id="@+id/AutoRotateSwitch"
+                android:layout_width="146px"
+                android:layout_height="44px"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/autorotateText"
+                android:layout_marginLeft="55px"
+                android:layout_marginTop="19px"
+                android:background="@drawable/switch_track"
+                android:textOff="Off"
+                android:textOn="On"
+                android:thumb="@drawable/switch_thumb"
+                android:textColor="#4C3317" />
+            -->
+
+            <com.shou.ui.CTextView
+                android:id="@+id/viewPageNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/autorotateText"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="39px"
+                android:text="페이지 보기"
+                android:textColor="#4C3317"
+                android:textSize="18px"
+                custom:typeface="YDYGO33" />
+
+            <!--
+                 <Switch
+                android:id="@+id/ViewPageNumSelect"
+                android:layout_width="146px"
+                android:layout_height="44px"
+                android:layout_below="@+id/AutoRotateView"
+                android:layout_toRightOf="@+id/viewPageNum"
+                android:layout_marginLeft="33px"
+                android:layout_marginTop="19px"
+                android:background="@drawable/switch_track"
+                android:textOff="2"
+                android:textOn="1"
+                android:thumb="@drawable/switch_thumb"
+                android:textColor="#4C3317" />
+            -->
+
+            <LinearLayout
+                android:id="@+id/ViewPageNumSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/AutoRotateView"
+                android:layout_marginLeft="33px"
+                android:layout_marginTop="19px"
+                android:layout_toRightOf="@+id/viewPageNum"
+                android:background="@drawable/switch_off"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/PageViewOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnPageViewSelected" >
+
+                    <ImageView
+                        android:id="@+id/PageViewOneButton"
+                        android:layout_width="76px"
+                        android:layout_height="44px"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/PageViewOneText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="1"
+                        android:textColor="#4C3317"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/PageViewTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnPageViewSelected" >
+
+                    <ImageView
+                        android:id="@+id/PageViewTwoButton"
+                        android:layout_width="76px"
+                        android:layout_height="44px"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/PageViewTwoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="2"
+                        android:textColor="#4C3317"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.shou.ui.CTextView
+                android:id="@+id/viewDirection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/viewPageNum"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="40px"
+                android:text="보기 방향"
+                android:textColor="#4C3317"
+                android:textSize="18px"
+                custom:typeface="YDYGO33" />
+
+            <!--
+                 <Switch
+                android:id="@+id/ViewDirectionSelect"
+                android:layout_width="216px"
+                android:layout_height="44px"
+                android:layout_below="@+id/ViewPageNumSelect"
+                android:layout_toRightOf="@+id/viewDirection"
+                android:layout_marginLeft="48px"
+                android:layout_marginTop="19px"
+                android:background="@drawable/switch_track"
+                android:textOff="오른쪽으로"
+                android:textOn="왼쪽으로"
+                android:thumb="@drawable/switch_thumb"
+                android:textColor="#4C3317" />
+            -->
+
+            <LinearLayout
+                android:id="@+id/ViewPageDirection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ViewPageNumSelect"
+                android:layout_marginLeft="48px"
+                android:layout_marginTop="19px"
+                android:layout_toRightOf="@+id/viewDirection"
+                android:background="@drawable/switch_off"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/ViewDirectionRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnPageDirectionSelected" >
+
+                    <ImageView
+                        android:id="@+id/ViewDirectionRightButton"
+                        android:layout_width="111px"
+                        android:layout_height="44px"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/ViewDirectionRightText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="오른쪽으로"
+                        android:textColor="#4C3317"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ViewDirectionLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnPageDirectionSelected" >
+
+                    <ImageView
+                        android:id="@+id/ViewDirectionLeftButton"
+                        android:layout_width="111px"
+                        android:layout_height="44px"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/ViewDirectionLeftText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="왼쪽으로"
+                        android:textColor="#4C3317"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.shou.ui.CTextView
+                android:id="@+id/tapDirection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/viewDirection"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="40px"
+                android:text="탭 방향"
+                android:textColor="#4C3317"
+                android:textSize="18px"
+                custom:typeface="YDYGO33" />
+
+            <LinearLayout
+                android:id="@+id/tapDirectionLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ViewPageDirection"
+                android:layout_marginLeft="65px"
+                android:layout_marginTop="19px"
+                android:layout_toRightOf="@+id/tapDirection"
+                android:background="@drawable/switch_off"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/ToViewDirection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnTapDirectionClicked" >
+
+                    <ImageView
+                        android:id="@+id/ToViewDirectionButton"
+                        android:layout_width="91px"
+                        android:layout_height="44px"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/ToViewDirectionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="보기방향"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="2px"
+                    android:layout_height="44px"
+                    android:background="@drawable/switch_divider" />
+
+                <RelativeLayout
+                    android:id="@+id/ToRightDirection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnTapDirectionClicked" >
+
+                    <ImageView
+                        android:id="@+id/ToRightDirectionButton"
+                        android:layout_width="91px"
+                        android:layout_height="44px"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/ToRightDirectionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="오른쪽"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="2px"
+                    android:layout_height="44px"
+                    android:background="@drawable/switch_divider" />
+
+                <RelativeLayout
+                    android:id="@+id/ToLeftDirection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnTapDirectionClicked" >
+
+                    <ImageView
+                        android:id="@+id/ToLeftDirectionButton"
+                        android:layout_width="91px"
+                        android:layout_height="44px"
+                        android:background="@drawable/switch_on" />
+
+                    <com.shou.ui.CTextView
+                        android:id="@+id/ToLeftDirectionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="왼쪽"
+                        android:textSize="20px"
+                        custom:typeface="YDYGO33" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.shou.ui.CTextView
+                android:id="@+id/Brightness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tapDirection"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="36px"
+                android:text="밝기"
+                android:textColor="#4C3317"
+                android:textSize="18px"
+                custom:typeface="YDYGO33" />
+
+            <ImageView
+                android:id="@+id/BrightnessUp"
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_below="@+id/tapDirection"
+                android:layout_marginTop="33px"
+                android:layout_marginLeft="44px"
+                android:layout_toRightOf="@+id/Brightness"
+                android:src="@drawable/icon_brightness_up" />
+            
+            <ImageView
+                android:id="@+id/brightnessSettingBar"
+                android:layout_width="245px"
+                android:layout_height="3px"
+                android:layout_toRightOf="@+id/BrightnessUp"
+                android:layout_below="@+id/tapDirectionLayout"
+                android:layout_marginLeft="8px"
+                android:layout_marginTop="40px"
+                android:background="@drawable/bar_brightness"/>
+
+            <SeekBar
+                android:id="@+id/brightnessSetting"
+                android:layout_width="245px"
+                android:layout_height="20px"
+                android:layout_below="@+id/tapDirectionLayout"
+                android:layout_alignLeft="@+id/brightnessSettingBar"
+                android:layout_marginTop="34px"
+                android:background="@android:color/transparent"
+                android:max="255"
+                android:progress="0"
+                android:progressDrawable="@android:color/transparent"
+                android:secondaryProgress="0"
+                android:thumb="@drawable/indicator_brightness" />
+
+            <ImageView
+                android:id="@+id/BrightnessDown"
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_below="@+id/tapDirection"
+                android:layout_marginTop="33px"
+                android:layout_marginLeft="8px"
+                android:layout_toRightOf="@+id/brightnessSetting"
+                android:src="@drawable/icon_brightness_down" />
+        </RelativeLayout>
+    </ViewAnimator>
+
+    <ViewAnimator
+        android:id="@+id/BottomBarSwitcher"
+        android:layout_width="match_parent"
+        android:layout_height="72px"
+        android:layout_alignParentBottom="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bar_body_pattern"
+            android:onClick="onNothing" >
+
+            <com.shou.ui.CTextView
+                android:id="@+id/progressPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="26px"
+                android:layout_marginLeft="21px"
+                android:textColor="#FFFFFF"
+                android:textSize="18px"
+                custom:typeface="YDYGO34" />
+
+            <SeekBar
+                android:id="@+id/ContentsSeekBarPortrait"
+                android:layout_width="636px"
+                android:layout_height="21px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="25px"
+                android:layout_marginLeft="25px"
+                android:layout_toRightOf="@id/progressPercentage"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@android:color/transparent"
+                android:secondaryProgress="0"
+                android:thumb="@drawable/indicator_page" />
+            
+            <SeekBar
+                android:id="@+id/ContentsSeekBarLandscape"
+                android:layout_width="1037px"
+                android:layout_height="21px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="25px"
+                android:layout_marginLeft="25px"
+                android:layout_toRightOf="@id/progressPercentage"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@android:color/transparent"
+                android:secondaryProgress="0"
+                android:thumb="@drawable/indicator_page" />
+        </RelativeLayout>
+    </ViewAnimator>
+
+</RelativeLayout>
